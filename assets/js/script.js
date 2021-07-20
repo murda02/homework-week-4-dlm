@@ -11,3 +11,27 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score 
 */
+
+let buttonEl = document.querySelector("button");
+let counterEl = document.getElementById("quiz-counter");
+
+
+buttonEl.addEventListener("click", function () { 
+    buttonEl.setAttribute("class", "change-color");
+    counterEl.setAttribute("class", "change-color");
+    countDown();
+ });
+
+ function countDown() {
+    let timeLeft = 60;
+
+    let timeInterval = setInterval(() => {
+        if (timeLeft > 1) {
+            counterEl.textContent = "Time: " + timeLeft;
+            timeLeft--;
+        } else {
+            counterEl.textContent = "Time's up!!!";
+            clearInterval(timeInterval);
+        }
+    }, 1000);  
+ }
