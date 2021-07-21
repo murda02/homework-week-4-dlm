@@ -32,6 +32,16 @@ nav {
   color: hsl(206, 17%, 28%);
 }
 
+.no-frills {
+  text-decoration: none;
+  color: hsl(206, 17%, 28%);
+}
+
+.no-frills:hover {
+  text-decoration: underline;
+  color: #001090;
+}
+
 #quiz-counter {
   background-color: none;
 }

@@ -22,7 +22,7 @@ buttonEl.addEventListener("click", function () {
     countDown();
  });
 
- function countDown() {
+function countDown() {
     let timeLeft = 60;
 
     let timeInterval = setInterval(() => {
@@ -35,3 +35,7 @@ buttonEl.addEventListener("click", function () {
         }
     }, 1000);  
  }
+
+ function quizQuestions() { 
+
+  }
