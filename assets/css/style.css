@@ -55,9 +55,10 @@ p {
     padding: 10px;
 }
 
-button {
+  #start-button {
   border: none;
-  background-color: aquamarine;
+  background-color: purple;
+  color: whitesmoke;
   border-radius: 25px;
   font-weight: bold;
   cursor: pointer;
@@ -69,7 +70,6 @@ button {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-  
 }
 
 .card {
@@ -86,4 +86,87 @@ button {
 
 .change-color {
   background-color: pink;
+}
+
+#question {
+  color: hsl(206, 17%, 28%);
+}
+
+.choice-container {
+  display: flex;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  border-radius: 4px;
+  background-color: purple;
+  color: whitesmoke;
+}
+
+.choice-container:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.choice-prefix {
+  padding: 1rem 1.2rem;
+  color: whitesmoke;
+}
+
+.choice-text {
+  padding: 1rem;
+  width: 100%;
+}
+
+.correct {
+  background: green;
+}
+
+.incorrect {
+  background: red;
+}
+
+input {
+  background-color: #f1f3f4;
+  border-radius: 2px;
+  border-width: 0;
+  font-size: 1em;
+  height: 45px;
+  line-height: 20px;
+  margin: 0;
+  margin-top: 10px;
+  padding-left: 30px;
+  max-width: 50%;
+  padding: 8px 8px 8px 8px;
+  transition-delay: 0s, 0s;
+  transition-duration: 0.2s, 0.2s;
+  transition-property: background-color, color;
+  transition-timing-function: ease, ease;
+  vertical-align: middle;
+  width: 100%;
+}
+
+#high-score {
+    font-size: 3em;
+    margin: 0px;
+    margin-top: 0.45em;
+    margin-bottom: 0.45em;
+}
+
+#user-high-scores {
+  margin-top: 40px;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(206, 17%, 28%);
+  font-size: 25px;
+  padding: 30px 40px;
+}
+
+#initials {
+  position: absolute;
+  left: 25%;
+}
+
+@media screen and (max-width: 768) {
+  .choice-container {
+    min-width: 40rem;
+  }
 }
