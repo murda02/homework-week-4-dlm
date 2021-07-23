@@ -16,6 +16,10 @@ This week I created a javascript quiz game. The score is determined by the amoun
 ![Code Quiz quiz page](./assets/images/quizpage.jpg)
 ![Code Quiz score page](./assets/images/scorepage.jpg)
 
+## Link to my web application:
+
+Link to my [Code Quiz app](https://murda02.github.io/homework-week-4-dlm/)
+
 ## Author
 
     Dave Murphy
