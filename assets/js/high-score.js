@@ -2,18 +2,16 @@ let userInitialsInput = document.querySelector("#initials");
 let userList = document.querySelector("#user-high-scores");
 let userInitials = [];
 
+// a function that puts ups the user's initials & score on the page
 function renderInitials () {
+    let userInitial = userInitials[userInitials.length -1];
+    let yourScore = localStorage.getItem("timeLeft");
+    let li = document.createElement("li");
+        li.textContent = `${userInitial} = ${yourScore}`;
+        li.setAttribute("data-index", userInitials.length);
+
+    userList.appendChild(li);
     userInitialsInput.innerHTML = "";
-    for (let i = 0; i < userInitials.length; i++) {
-        let userInitial = userInitials[i];
-
-        let li = document.createElement("li");
-        li.textContent = userInitial;
-        li.setAttribute("data-index", i);
-
-        userList.appendChild(li);
-        
-    }
 }
 
 function init () {
@@ -21,7 +19,6 @@ function init () {
     if (storedInitials !== null) {
         userInitials = storedInitials;
     }
-    renderInitials();
 }
 
 function storeInitials() {
@@ -37,7 +34,7 @@ userInitialsInput.addEventListener("keypress", function (e) {
         }
         userInitials.push(userText);
         userInitialsInput.value = "";
-
+            
         storeInitials();
         renderInitials();
       }

@@ -1,26 +1,16 @@
-/*
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
-*/
-
+//lines 2-4 are getting elements from the web page 
 const question = document.querySelector("#question");
 const choices = Array.from(document.querySelectorAll(".choice-text"));
 const scoreText = document.querySelector('#quiz-counter');
-let timeLeft = 0;
+
+const timePenalty = 10;
+let timeLeft;
 let timerEl = document.getElementById("quiz-counter");
 let currentQuestion = {};
 let acceptingAnswers = true;
-let score = 0;
 let availableQuestions = [];
+
+// an array of js questions, possible choices and the answer
 let questions = [
     {
         question: "Which of the following are JavaScript Data Types?",
@@ -56,12 +46,9 @@ let questions = [
     }
 ];
 
-if (window.location == "file:///home/dave/du/homework/week4/quiz.html") {
-    countDown();
-}
-
+// a count down timer
 function countDown() {
-    let timeLeft = 60;
+    timeLeft = 60;
 
     let timeInterval = setInterval(() => {
 
@@ -75,15 +62,26 @@ function countDown() {
     }, 1000);  
  }
  
- 
+ // the function thats the quiz off
 startQuiz = () => {
+    countDown();
     availableQuestions = [...questions];
     nextQuestion();
 };
+
+// a function that returns timeLeft (the users score) after the last questions is anwsered
+userScore = () => {
+    if (availableQuestions.length === 0) {
+        return timeLeft;
+    }
+};
  
-//need to figure out how to get '|| timeLeft === 0' to work in if statement
+// a function that randomly selects a questions form the question array, displays
+// it on the page, grabs the timeLeft (or score) and takes the user to the
+// high score page
 nextQuestion = () => {
     if (availableQuestions.length === 0) {
+        localStorage.setItem("timeLeft", JSON.stringify(timeLeft));
         return window.location.assign("highscores.html");
     }
 
@@ -100,7 +98,10 @@ nextQuestion = () => {
 
     acceptingAnswers = true;
 };
- 
+
+// this loops through the choices array and checks if the users selected answer is
+// right or wrong. If it's right the choice is highlighted green, if it's wrong
+// it's highlighted red and the user losses 10 seconds off the clock
 choices.forEach(choice => {
     choice.addEventListener("click", e => {
         if(!acceptingAnswers) return;
@@ -111,6 +112,11 @@ choices.forEach(choice => {
 
         let classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
         
+        if (selectedAnswer == currentQuestion.answer) {
+        } else {
+            timeLeft = timeLeft - timePenalty;
+        }
+
         selectedChoice.parentElement.classList.add(classToApply);
 
         setTimeout(() => {
